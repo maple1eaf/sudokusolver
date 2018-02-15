@@ -10,7 +10,7 @@ import time
 import requests
 from bs4 import BeautifulSoup
 
-import sudoku_solver
+import solver
 
 
 def get_url(dify):
@@ -73,13 +73,13 @@ def timer(func):
 
 @timer
 def solve(question):
-    return sudoku_solver.sudokusolve(question)
+    return solver.sudokusolve(question)
 
 def try_again():
-    trl = ['yes', 'no']
+    trl = ['yes', 'y', 'no', 'n']
     while True:
         print('Try again?')
-        print('("yes" for again, "no" for quit.)')
+        print('(y)es -- try again.\n(n)o -- quit.')
         tryagain = input("Please enter:")
         if tryagain in trl:
             return tryagain
@@ -95,10 +95,10 @@ def main():
         solve(Q) # 解决问题
         print("=" * 50)
         tr = try_again()
-        if tr == 'yes':
+        if tr in ['yes', 'y']:
             print("=" * 50)
             continue
-        elif tr == 'no':
+        elif tr in ['no', 'n']:
             break
 
 if __name__ == '__main__':

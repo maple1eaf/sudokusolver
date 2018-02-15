@@ -16,6 +16,10 @@ q = [
 ---未知的数以数字0填充。
 """
 
+import time
+
+import solver
+
 # easy难度，只需要尽力求解就可以得出结果
 q1 = [
 3, 7, 0, 0, 1, 9, 0, 4, 8,
@@ -79,7 +83,12 @@ def getaquestion():
             print("==================================================")
             continue
         
+def debug():
+    question = getaquestion()# 获取数独
+    time_begin = time.time()# 计时开始
+    solver.sudokusolve(question)# 解题
+    time_end = time.time()# 计时结束
+    print("Time used:", time_end-time_begin,"s")# 输出解题时间
 
-
-
-
+if __name__ == "__main__":
+    debug()

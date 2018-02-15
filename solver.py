@@ -4,7 +4,7 @@
 import operator
 import time
 
-import debug_sudoku
+import debug
 
 blockdic = {0:0, 1:3, 2:6, 3:27, 4:30, 5:33, 6:54, 7:57, 8:60}
 result = [2**x for x in range(9)]
@@ -17,10 +17,10 @@ def sudokusolve(s0_r):
     s1_p中存储这未确定的解的可能值,其中解确定的位置值等于0
     """
     s0_p = [r2p(x) for x in s0_r]
-    print("==================================================")
+    print("=" * 50)
     print("The SUDOKU question is:")
     printseq1(s0_r)# 打印待解数独
-    print("==================================================")
+    print("=" * 50)
     print("Begin to solve......\n")
     s0_p, s1_p = trybest(s0_p)
     if jobnotfinished(s0_p):# 在第一次尽力求解后，需要先判断一下是否已经得出结果
@@ -209,11 +209,7 @@ def printcombin_r(seq0, seq1):
     printseq([p2r(seq0[x]+seq1[x]) for x in range(81)])
 
 def main():
-    sudoku_question = debug_sudoku.getaquestion().copy()# 获取数独
-    time_begin = time.time()# 计时开始
-    existsolution, sudoku_answer = sudokusolve(sudoku_question)# 解题
-    time_end = time.time()# 计时结束
-    print("Time used:", time_end-time_begin,"s")# 输出解题时间
+    pass
 
 if __name__ == "__main__":
     main()
